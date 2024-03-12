@@ -10,6 +10,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.document_loaders import PyPDFLoader
 from langchain.document_loaders import TextLoader
 from langchain.document_loaders import Docx2txtLoader
+from langchain.document_loaders import CSVLoader
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 import os
 from dotenv import load_dotenv
@@ -100,6 +101,8 @@ def main():
                 loader = Docx2txtLoader(temp_file_path)
             elif file_extension == ".txt":
                 loader = TextLoader(temp_file_path)
+            elif file_extension == ".csv":
+                loader = CSVLoader(temp_file_path)
 
             if loader:
                 text.extend(loader.load())
